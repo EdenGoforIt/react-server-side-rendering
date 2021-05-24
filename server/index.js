@@ -1,7 +1,8 @@
-const express = require("express");
+// const express = require("expre ss");
+import express from "express";
 
 const app = new express();
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   res.send("<h1>Hello world </h1>");
 });
 

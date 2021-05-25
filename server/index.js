@@ -1,9 +1,11 @@
-// const express = require("expre ss");
 import express from "express";
+import { readFileSync } from "fs";
 
 const app = new express();
+app.use(express.static("dist"));
 app.get("/", async (req, res) => {
-  res.send("<h1>Hello world </h1>");
+  const index = readFileSync("public/index.html", "utf8");
+  res.send(index);
 });
 
 app.listen(7777);

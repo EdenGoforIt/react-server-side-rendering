@@ -6,14 +6,17 @@ process.env.NODE_ENV = "development";
 module.exports = {
   mode: "development",
   target: "node",
-  entry: "./client/client.jsx",
+  entry: {
+    client: "./client/client.jsx",
+  },
+
   //server side rendering configuraiton
   // ssrIndexJs: resolveApp("src/index.server.js"),
   // ssrBuild: resolveApp("dist"),
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     publicPath: "/",
-    filename: "bundle.js",
+    filename: "[name].js",
   },
   module: {
     rules: [

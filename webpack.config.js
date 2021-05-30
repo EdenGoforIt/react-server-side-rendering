@@ -1,30 +1,27 @@
-const webpack = require("webpack");
-const path = require("path");
-
-process.env.NODE_ENV = "development";
+const { resolve } = require("path");
 
 module.exports = {
   mode: "development",
-  target: "node",
   entry: {
     client: "./client/client.jsx",
   },
-
-  //server side rendering configuraiton
-  // ssrIndexJs: resolveApp("src/index.server.js"),
-  // ssrBuild: resolveApp("dist"),
   output: {
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
     filename: "[name].js",
   },
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
+  /** can module be omitted for a simple project? No, it cannot. */
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        test: /\.jsx?$/,
+        exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
         },
       },
     ],
